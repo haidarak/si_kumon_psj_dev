@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2016 at 03:59 PM
+-- Generation Time: Jul 26, 2016 at 05:43 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -209,6 +209,26 @@ CREATE TABLE IF NOT EXISTS `tbl_tingkatan` (
   `nama` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `authKey` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='This table will be used for login. For now, will be standalone table.';
+
+--
+-- Dumping data for table `tbl_user`
+--
+
+INSERT INTO `tbl_user` (`id`, `username`, `password`, `authKey`) VALUES
+(1, 'admin', '7b14552c6d9f832626d19533b31b6cf754a2fad7', 'psj01');
+
 --
 -- Indexes for dumped tables
 --
@@ -271,7 +291,7 @@ ALTER TABLE `tbl_murid_status`
 -- Indexes for table `tbl_pegawai`
 --
 ALTER TABLE `tbl_pegawai`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `nomor_pegawai` (`nomor_pegawai`);
 
 --
 -- Indexes for table `tbl_pelajaran`
@@ -291,6 +311,81 @@ ALTER TABLE `tbl_status`
 ALTER TABLE `tbl_tingkatan`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `authKey` (`authKey`), ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_biaya`
+--
+ALTER TABLE `tbl_biaya`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_murid_cuti`
+--
+ALTER TABLE `tbl_murid_cuti`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_murid_initialtest`
+--
+ALTER TABLE `tbl_murid_initialtest`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_murid_kontak`
+--
+ALTER TABLE `tbl_murid_kontak`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_murid_pelajaran`
+--
+ALTER TABLE `tbl_murid_pelajaran`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_murid_pembayaran`
+--
+ALTER TABLE `tbl_murid_pembayaran`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_murid_sejarah`
+--
+ALTER TABLE `tbl_murid_sejarah`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_murid_status`
+--
+ALTER TABLE `tbl_murid_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_pegawai`
+--
+ALTER TABLE `tbl_pegawai`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_pelajaran`
+--
+ALTER TABLE `tbl_pelajaran`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_status`
+--
+ALTER TABLE `tbl_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_tingkatan`
+--
+ALTER TABLE `tbl_tingkatan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
