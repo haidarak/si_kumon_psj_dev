@@ -1,0 +1,3 @@
+login function references : https://www.youtube.com/watch?v=MYOcEVlv9l0
+AdminLTE Integration video link : https://www.youtube.com/watch?v=OnauNk0eeOM
+

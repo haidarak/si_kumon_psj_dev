@@ -1,0 +1,2 @@
+26/7/2016 : Development started - able to code login function
+27/7/2016 : trying to integrate admin LTE theme. Failed at 2:46 in the video (navbar error) - will rollback
