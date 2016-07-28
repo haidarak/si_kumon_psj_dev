@@ -74,6 +74,7 @@ class TblUser extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     public  function validatePassword($password){
-        return $this->password === sha1($password);
+        // return $this->password === sha1($password); used to enable encrypt using sha, however, still not found how gii encrypt this to sha1
+        return $this->password === ($password);
     }
 }

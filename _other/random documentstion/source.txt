@@ -1,3 +1,4 @@
 login function references : https://www.youtube.com/watch?v=MYOcEVlv9l0
 AdminLTE Integration video link : https://www.youtube.com/watch?v=OnauNk0eeOM
+Using gii : http://www.yiiframework.com/doc-2.0/guide-start-gii.html
 
