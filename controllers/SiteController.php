@@ -6,6 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use app\helpers\UiHelper;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
@@ -19,10 +20,13 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['login'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -60,6 +64,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        UiHelper::alert('Flash message example 1', UiHelper::SUCCESS);
+        UiHelper::alert('Flash message example 2', UiHelper::SUCCESS);
+
+        UiHelper::callout('Callout example 1', UiHelper::WARNING);
+        UiHelper::callout('Callout example 2', UiHelper::WARNING);
+
         return $this->render('index');
     }
 
@@ -74,6 +84,7 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
+        $this->layout = 'login';
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();

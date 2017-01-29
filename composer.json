@@ -1,7 +1,7 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
-    "keywords": ["yii2", "framework", "basic", "project template"],
+    "name": "ledat/yii2-app-basic-admin-lte",
+    "description": "Yii 2 Basic Project Template + Almsaeed Studio AdminLTE",
+    "keywords": ["yii2", "framework", "basic", "project template", "adminlte"],
     "homepage": "http://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
@@ -12,15 +12,19 @@
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
+        "amnah/yii2-user": "^5.0",
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.5",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*"
+        "yiisoft/yii2-swiftmailer": "*",
+        "kartik-v/yii2-widgets": "*",
+        "yiisoft/yii2-jui": "*",
+        "phpoffice/phpexcel": "*"
     },
     "require-dev": {
-        "yiisoft/yii2-codeception": "*",
+        "codeception/codeception": "*",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
         "yiisoft/yii2-faker": "*"
@@ -50,5 +54,13 @@
             "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"
         }
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\helpers\\": "helpers"
+        },
+        "files": [
+            "common/utils.php"
+        ]
     }
 }

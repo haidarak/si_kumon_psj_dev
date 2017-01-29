@@ -6,16 +6,17 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'id',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'zYJLGFJDcLvdxaayPjPvjOkFuZSZGolZ',
+            'cookieValidationKey' => 'tWb2vg9MGETe7VSfAE8L0hCYBZS4UsYw',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\TblUser',
+            'identityClass' => 'app\models\User',
             'enableAutoLogin' => false,
         ],
         'errorHandler' => [
@@ -27,6 +28,10 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
+            'messageConfig' => [
+                'from' => ['admin@website.com' => 'Admin'], // this is needed for sending emails
+                'charset' => 'UTF-8',
+            ]
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -38,12 +43,18 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
+        ],
+        'assetManager' => [
+            'linkAssets' => true
+        ],
+        'formatter' => [
+            'class' => 'app\components\Formatter',
+            'datetimeFormat' => 'dd/MM/yyyy HH:mm',
         ],
     ],
     'params' => $params,
@@ -54,11 +65,21 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
+        'allowedIPs' => ['127.0.0.1', '10.0.2.2', '::1']
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'allowedIPs' => ['127.0.0.1', '10.0.2.2', '::1'],
+        'generators' => [
+            'custom-crud' => [
+                'class' => 'app\generators\crud\Generator',
+                'templates' => [
+                    'custom-crud' => '@app/generators/crud/custom',
+                ]
+            ],
+        ],
     ];
 }
 

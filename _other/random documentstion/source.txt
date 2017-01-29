@@ -1,4 +1,5 @@
 login function references : https://www.youtube.com/watch?v=MYOcEVlv9l0
 AdminLTE Integration video link : https://www.youtube.com/watch?v=OnauNk0eeOM
 Using gii : http://www.yiiframework.com/doc-2.0/guide-start-gii.html
+http://www.yiiframework.com/wiki/729/tutorial-about-how-to-integrate-yii2-with-fantastic-theme-adminlte/
 
